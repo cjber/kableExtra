@@ -291,7 +291,7 @@ footnote_latex <- function(kable_input, footnote_table, footnote_as_chunk,
   } else {
     if (table_info$booktabs) {
       out <- sub("\\\\bottomrule",
-                 paste0("\\\\bottomrule\n", footnote_text), out)
+                 paste0("\\\\bottomrule\\\\vskip\n", footnote_text), out)
     } else {
       out <- sub(table_info$end_tabular,
                  paste0(footnote_text, "\n\\\\end{", table_info$tabular, "}"),
@@ -339,11 +339,11 @@ latex_tfoot_maker_ <- function(ft_contents, ft_title, ft_chunk, ncol) {
   }
   if (!ft_chunk) {
     footnote_text <- paste0(
-      '\\\\vskip\\\\multicolumn{', ncol, '}{l}{', footnote_text, '}\\\\\\\\'
+      '\\\\multicolumn{', ncol, '}{l}{', footnote_text, '}\\\\\\\\'
     )
   } else {
     footnote_text <- paste0(
-      '\\\\vksip\\\\multicolumn{', ncol, '}{l}{',
+      '\\\\multicolumn{', ncol, '}{l}{',
       paste0(footnote_text, collapse = " "),
       '}\\\\\\\\'
     )
