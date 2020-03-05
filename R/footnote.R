@@ -291,7 +291,7 @@ footnote_latex <- function(kable_input, footnote_table, footnote_as_chunk,
   } else {
     if (table_info$booktabs) {
       out <- sub("\\\\bottomrule",
-                 paste0("\\\\bottomrule\n\\\\rule{0pt}{1em}", footnote_text), out)
+                 paste0("\\\\bottomrule\n", "\\\\rule{0pt}{1em}", footnote_text), out)
     } else {
       out <- sub(table_info$end_tabular,
                  paste0(footnote_text, "\n\\\\end{", table_info$tabular, "}"),
