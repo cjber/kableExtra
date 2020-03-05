@@ -339,11 +339,11 @@ latex_tfoot_maker_ <- function(ft_contents, ft_title, ft_chunk, ncol) {
   }
   if (!ft_chunk) {
     footnote_text <- paste0(
-      '\\\\multicolumn{', ncol, '}{l}{', footnote_text, '}\\\\\\\\'
+      '\\\\vskip\\\\multicolumn{', ncol, '}{l}{', footnote_text, '}\\\\\\\\'
     )
   } else {
     footnote_text <- paste0(
-      '\\\\multicolumn{', ncol, '}{l}{',
+      '\\\\vksip\\\\multicolumn{', ncol, '}{l}{',
       paste0(footnote_text, collapse = " "),
       '}\\\\\\\\'
     )
