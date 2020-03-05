@@ -265,7 +265,7 @@ footnote_latex <- function(kable_input, footnote_table, footnote_as_chunk,
                         "}\n\\\\end{ThreePartTable}"),
                  out)
       if (table_info$booktabs) {
-        out <- sub("\\\\bottomrule", "\\\\bottomrule\\\\smallskip\n\\\\insertTableNotes", out)
+        out <- sub("\\\\bottomrule", "\\\\bottomrule\n\\\\insertTableNotes", out)
       } else {
         out <- sub("\\\\hline\n\\\\end\\{longtable\\}",
                    "\\\\hline\n\\\\insertTableNotes\n\\\\end\\{longtable\\}",
@@ -291,7 +291,7 @@ footnote_latex <- function(kable_input, footnote_table, footnote_as_chunk,
   } else {
     if (table_info$booktabs) {
       out <- sub("\\\\bottomrule",
-                 paste0("\\\\bottomrule\\\\smallskip\n", footnote_text), out)
+                 paste0("\\\\bottomrule\n", footnote_text, "\\\\rule{0pt}{1em}"), out)
     } else {
       out <- sub(table_info$end_tabular,
                  paste0(footnote_text, "\n\\\\end{", table_info$tabular, "}"),
